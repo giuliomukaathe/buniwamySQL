@@ -92,7 +92,7 @@ DATABASES = {
         'NAME': 'buniwacreations',
         'USER': 'postgres',
         'PASSWORD': '7840',
-        'HOST': 'localhost'
+        'HOST': 'localhost',
         'PORT': '5432'
     }
 }
