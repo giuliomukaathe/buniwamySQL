@@ -1,0 +1,1 @@
+web.gunicorn buniwa.wsgi:application --log-file -
