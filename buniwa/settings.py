@@ -101,7 +101,13 @@ WSGI_APPLICATION = 'buniwa.wsgi.application'
 # }
 
 DATABASES = {
-    'default': dj_database_url.parse(env('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'buniwacreations',
+        'USER': 'postgres',
+        'PASSWORD': '7840',
+        'HOST': 'localhost'
+    }
 }
 
 
