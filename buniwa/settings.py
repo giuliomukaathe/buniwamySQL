@@ -12,23 +12,26 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path 
 import os
+import dj_database_url
+import environ
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+env = environ.Env()
+environ.Env.read_env()
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-*teypbvbl-5*xe@6alimhpedn!bkfu)0&%9&mooe!dg63pajhj'
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '*teypbvbl-5*xe@6alimhpedn!bkfu)0&%9&mooe!dg63pajhj')
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'buniwacreations.co.ke', 'buniwacreations.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'buniwacreations.co.ke', 'buniwacreations.com', '*']
 
 
 # Application definition
@@ -86,14 +89,19 @@ WSGI_APPLICATION = 'buniwa.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'buniwacreations',
+#         'USER': 'postgres',
+#         'PASSWORD': '7840',
+#         'HOST': 'localhost'
+        
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'buniwacreations',
-        'USER': 'postgres',
-        'PASSWORD': '7840',
-        'HOST': 'localhost'
-    }
+    'default': dj_database_url.parse(env('DATABASE_URL'))
 }
 
 
