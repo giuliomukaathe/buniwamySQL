@@ -89,20 +89,21 @@ WSGI_APPLICATION = 'buniwa.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'buniwacreations',
-#         'USER': 'postgres',
-#         'PASSWORD': '7840',
-#         'HOST': 'localhost'
-        
-#     }
-# }
-
 DATABASES = {
-    'default': dj_database_url.parse(env('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'buniwacreations',
+        'USER': 'root',
+        'PASSWORD': '7840',
+        'PORT': '3306',
+        'HOST': '127.0.0.1',
+        
+    }
 }
+
+# DATABASES = {
+#     'default': dj_database_url.parse(env('DATABASE_URL'))
+# }
 
 
 # Password validation
